@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PraktikaWPF1
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для PlanHotelxaml.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PlanHotelxaml : Window
     {
-        public MainWindow()
+        public PlanHotelxaml()
         {
             InitializeComponent();
-        }
-
-        private void plan_Click(object sender, RoutedEventArgs e)
-        {
-            PlanHotelxaml hotelxaml = new PlanHotelxaml();
-            hotelxaml.Show();
         }
     }
 }

@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="413*"/>
+            <ColumnDefinition Width="190*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Margin="0,24.347,0,-0.001" TextWrapping="Wrap" Text="Hotel" FontSize="72" VerticalAlignment="Center" TextAlignment="Center"/>
+        <Button Content="Booking" Grid.Column="1" Margin="120,44.086,124.712,0" Grid.Row="1" FontSize="18"/>
+        <Button Content="Clear" Grid.Column="1" Margin="120,44.086,124.712,0" Grid.Row="2" FontSize="18"/>
+        <Button x:Name="plan" Content="Plan hotel" Grid.Column="1" Margin="120,70.615,124.712,48.543" Grid.Row="3" FontSize="18" Click="plan_Click"/>
+
     </Grid>
 </Window>
