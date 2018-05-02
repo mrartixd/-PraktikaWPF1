@@ -30,5 +30,17 @@ namespace PraktikaWPF1
             PlanHotelxaml hotelxaml = new PlanHotelxaml();
             hotelxaml.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Booking booking = new Booking();
+            booking.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Clear clearform = new Clear();
+            clearform.Show();
+        }
     }
 }
