@@ -119,5 +119,11 @@
   <ItemGroup>
     <Resource Include="small-hotel-plan.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="greenkey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="redkey.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

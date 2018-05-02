@@ -12,17 +12,15 @@ namespace PraktikaWPF1
         private String l;
         private String t;
         private String d;
-        private int b;
         private DateTime s;
         private DateTime e;
 
-        public Klient (String name, String lastname, String telefone, String docnum, int booknumber, DateTime start, DateTime end)
+        public Klient (String name, String lastname, String telefone, String docnum, DateTime start, DateTime end)
         {
             this.n = name;
             this.l = lastname;
             this.t = telefone;
             this.d = docnum;
-            this.b = booknumber;
             this.s = start;
             this.e = end;
         }
@@ -36,7 +34,6 @@ namespace PraktikaWPF1
         public String lastname { get => l; set => l = value; }
         public String telefone { get => t; set => t = value; }
         public String docnum { get => d; set => d = value; }
-        public int booknumber { get => b; set => b = value; }
         public DateTime start { get => s; set => s = value; }
         public DateTime end { get => e; set => e = value; }
 
