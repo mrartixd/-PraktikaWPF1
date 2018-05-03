@@ -23,5 +23,14 @@ namespace PraktikaWPF1
         {
             InitializeComponent();
         }
+        static Room room1 = new Room();
+        static Room room2 = new Room();
+        static Room room3 = new Room();
+        static Room room4 = new Room();
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            room1 = new Room();
+        }
     }
 }
