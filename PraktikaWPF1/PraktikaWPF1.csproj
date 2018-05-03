@@ -123,7 +123,9 @@
     <Resource Include="greenkey.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="redkey.png" />
+    <Resource Include="redkey.png">
+      <CustomToolNamespace>redkey</CustomToolNamespace>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
