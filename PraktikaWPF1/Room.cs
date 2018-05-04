@@ -15,10 +15,10 @@ namespace PraktikaWPF1
         private String c;
         private bool s;
 
-        public Room (String nameroom, int numberroom, Klient klient, int rooms,  String classroom, bool status)
+        public Room (String nameroom, int idroom, Klient klient, int rooms,  String classroom, bool status)
         {
             this.nr = nameroom;
-            this.n = numberroom;
+            this.n = idroom;
             this.k = klient;
             this.r = rooms;
             this.c = classroom;
@@ -31,8 +31,9 @@ namespace PraktikaWPF1
         }
 
         public String NameRoom { get => nr; set => nr = value; }
-        public int NumberRoom { get => n; set => n = value; }
+        public int IDroom { get => n; set => n = value; }
         public Klient Klient { get => k; set => k = value; }
+        public int Rooms { get => r; set => r = value; }
         public String ClassRoom { get => c; set => c = value; }
         public bool Status { get => s; set => s = value; }
 
