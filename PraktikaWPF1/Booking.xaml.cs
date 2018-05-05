@@ -27,25 +27,30 @@ namespace PraktikaWPF1
         }
         static MainWindow main = new MainWindow();
         static List<Klient> klient = new List<Klient>();
-        static ObservableCollection<string> list = new ObservableCollection<string>();
+        static List<Room> room = new List<Room>();
         static System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
 
       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            room.Add(new Room("Room#1", 0, null, 2, "A", false));
+            room.Add(new Room("Room#2", 1, null, 2, "B", false));
+            room.Add(new Room("Room#3", 2, null, 1, "B", false));
+            room.Add(new Room("Room#4", 3, null, 1, "A", false));
+            room.Add(new Room("Room#5", 4, null, 2, "C", false));
+            room.Add(new Room("Room#6", 5, null, 1, "C", false));
+            room.Add(new Room("Room#7", 6, null, 2, "A", false));
+            room.Add(new Room("Room#8", 7, null, 3, "A", false));
+            room.Add(new Room("Room#9", 8, null, 1, "B", false));
 
-
-
-
-
-            for (int i = 0; i < .room.Count; i++)
+            for (int i = 0; i < room.Count; i++)
             {
+                if (!rooms.Items.Contains(RoomText(room[i])))
+                    rooms.Items.Add(RoomText(room[i]));
 
-                list.Add(RoomText(room[i]));
             }
-
-            this.rooms.ItemsSource = list;
+            
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
