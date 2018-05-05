@@ -55,7 +55,7 @@ namespace PraktikaWPF1
 
         private String RoomText(Room room)
         {
-           return room.NameRoom + " rooms: " + room.Rooms + " Class: " + room.ClassRoom; 
+           return room.NameRoom + " rooms: " + room.Beds + " Class: " + room.ClassRoom; 
         }
      
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -102,37 +102,258 @@ namespace PraktikaWPF1
 
         private void book_Click(object sender, RoutedEventArgs e)
         {
-            if(agreebox.IsChecked == true && room[rooms.SelectedIndex].Status == false)
+            if(name.Equals(null) || last.Equals(null) || numberdoc.Equals(null) || telephone.Equals(null) || rooms.SelectedIndex == -1)
             {
-                room[rooms.SelectedIndex].Status = true;
-                Klient kl = new Klient(name.Text, last.Text, telephone.Text, numberdoc.Text, starttime.SelectedDate.Value, endtime.SelectedDate.Value);
-                room[rooms.SelectedIndex].Klient = kl;
-                klient.Add(kl);
-                MessageBox.Show("Welcome", "Success", MessageBoxButton.OK);
-            }
-            else if(agreebox.IsChecked == false)
-            {
-                MessageBox.Show("Check agree state", "Agree book room", MessageBoxButton.OK);
+                MessageBox.Show("Field box empty", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                
             }
             else
             {
-                MessageBox.Show("Room booked", "Book room", MessageBoxButton.OK);
+                if (agreebox.IsChecked == true && room[rooms.SelectedIndex].Status == false)
+                {
+                    room[rooms.SelectedIndex].Status = true;
+                    Klient kl = new Klient(name.Text, last.Text, telephone.Text, numberdoc.Text, starttime.SelectedDate.Value, endtime.SelectedDate.Value);
+                    room[rooms.SelectedIndex].Klient = kl;
+                    klient.Add(kl);
+                    MessageBox.Show("Welcome", "Success", MessageBoxButton.OK,MessageBoxImage.Information);
+                }
+                else if (agreebox.IsChecked == false)
+                {
+                    MessageBox.Show("Check agree state", "Agree book room", MessageBoxButton.OK,MessageBoxImage.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Room booked", "Book room", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
             
         }
 
+        // mouse hover
         private void door1_MouseEnter(object sender, MouseEventArgs e)
         {
-            testlabel.Content = room[0].NameRoom.ToString();
+            nameroom.Content = room[0].NameRoom.ToString();
+            classroom.Content = room[0].ClassRoom.ToString();
+            numberroom.Content = room[0].Beds.ToString();
+            if(room[0].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+            
         }
 
         private void door1_MouseLeave(object sender, MouseEventArgs e)
         {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+            
+        }
+
+        private void door2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[1].NameRoom.ToString();
+            classroom.Content = room[1].ClassRoom.ToString();
+            numberroom.Content = room[1].Beds.ToString();
+            if (room[1].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
 
         }
+
+        private void door2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[2].NameRoom.ToString();
+            classroom.Content = room[2].ClassRoom.ToString();
+            numberroom.Content = room[2].Beds.ToString();
+            if (room[2].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door3_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door4_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[3].NameRoom.ToString();
+            classroom.Content = room[3].ClassRoom.ToString();
+            numberroom.Content = room[3].Beds.ToString();
+            if (room[3].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door4_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door5_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[4].NameRoom.ToString();
+            classroom.Content = room[4].ClassRoom.ToString();
+            numberroom.Content = room[4].Beds.ToString();
+            if (room[4].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door5_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door6_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[5].NameRoom.ToString();
+            classroom.Content = room[5].ClassRoom.ToString();
+            numberroom.Content = room[5].Beds.ToString();
+            if (room[5].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door6_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door7_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[6].NameRoom.ToString();
+            classroom.Content = room[6].ClassRoom.ToString();
+            numberroom.Content = room[6].Beds.ToString();
+            if (room[6].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door7_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door8_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[7].NameRoom.ToString();
+            classroom.Content = room[7].ClassRoom.ToString();
+            numberroom.Content = room[7].Beds.ToString();
+            if (room[7].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door8_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
+        private void door9_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = room[8].NameRoom.ToString();
+            classroom.Content = room[8].ClassRoom.ToString();
+            numberroom.Content = room[8].Beds.ToString();
+            if (room[8].Status == false)
+            {
+                statusbook.Content = "Empty";
+            }
+            else
+            {
+                statusbook.Content = "Booked";
+            }
+
+        }
+
+        private void door9_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nameroom.Content = "name room";
+            classroom.Content = "class room";
+            numberroom.Content = "bed number";
+            statusbook.Content = "status";
+
+        }
+
     }
 }

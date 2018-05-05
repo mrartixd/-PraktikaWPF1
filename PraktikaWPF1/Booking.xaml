@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PraktikaWPF1"
         mc:Ignorable="d"
-        Title="Booking" Height="695" Width="1088" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="Booking" Height="695" Width="1088" Loaded="Window_Loaded">
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
     </Window.Triggers>
@@ -31,32 +31,36 @@
         <Label Content="Document number:&#xD;&#xA;" HorizontalAlignment="Left" Margin="18.788,174.217,0,0" Grid.Row="1" Width="112.553" Height="25.96" VerticalAlignment="Top"/>
         <Label Content="Choose room:" HorizontalAlignment="Left" Margin="20.079,223.177,0,0" Grid.Row="1" Width="84.107" Height="25.96" VerticalAlignment="Top"/>
         <ComboBox x:Name="rooms" Margin="20.079,249.137,21.333,0" Grid.Row="1" Height="21.96" VerticalAlignment="Top">
-            
+
         </ComboBox>
         <Label Content="Start:" HorizontalAlignment="Left" Margin="20.079,271.097,0,0" Grid.Row="1" Width="37" Height="25.96" VerticalAlignment="Top"/>
         <DatePicker x:Name="starttime" Margin="20.079,297.057,21.333,0" Grid.Row="1" Height="24" VerticalAlignment="Top"/>
         <Label Content="End:" HorizontalAlignment="Left" Margin="20.079,321.597,0,0" Grid.Row="1" Width="32.527" Height="25.96" VerticalAlignment="Top"/>
         <DatePicker x:Name="endtime" Margin="20.079,347.557,21.333,0" Grid.Row="1" Height="24" VerticalAlignment="Top"/>
         <Label Content="Clien information:" Margin="18.788,0,38.534,346.82" Grid.Row="1" FontSize="16"/>
-        <Button x:Name="book" Content="Booking" Margin="190.16,26.455,0,0" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="247" Height="40.627" VerticalAlignment="Top" Click="book_Click"/>
-        <Button Content="Clear" Margin="44.341,45.122,63.847,47.041" Grid.Row="2" FontSize="18" Click="Button_Click"/>
-        <CheckBox x:Name="agreebox" Content="I agree booked room" Grid.Column="1" Margin="19.254,29.455,0,0" Grid.Row="2" Height="15.099" VerticalAlignment="Top" HorizontalAlignment="Left" Width="131.919"/>
+        <Button x:Name="book" Content="Booking" Margin="291.943,36.788,33.116,47.041" Grid.Row="2" Grid.Column="1" Click="book_Click" FontSize="20" FontWeight="Bold"/>
+        <Button Content="Clear" Margin="44.341,45.122,63.847,47.041" Grid.Row="2" FontSize="20" Click="Button_Click"/>
+        <CheckBox x:Name="agreebox" Content="I agree booked room" Grid.Column="1" Margin="100.03,39.789,396.777,93.901" Grid.Row="2"/>
         <Image x:Name="door1" Grid.Column="1" Margin="113.073,136.015,489.553,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door1_MouseEnter" MouseLeave="door1_MouseLeave"/>
-        <Image x:Name="door2" Grid.Column="1" Margin="220.573,136.017,382.053,207.281" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Image x:Name="door3" Grid.Column="1" Margin="328.073,136.016,274.553,207.282" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Image x:Name="door4" Grid.Column="1" Margin="440.573,136.015,162.053,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
+        <Image x:Name="door2" Grid.Column="1" Margin="220.573,136.017,382.053,207.281" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door2_MouseEnter" MouseLeave="door2_MouseLeave"/>
+        <Image x:Name="door3" Grid.Column="1" Margin="328.073,136.016,274.553,207.282" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door3_MouseEnter" MouseLeave="door3_MouseLeave"/>
+        <Image x:Name="door4" Grid.Column="1" Margin="440.573,136.015,162.053,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door4_MouseEnter" MouseLeave="door4_MouseLeave"/>
         <Image x:Name="redkey" Source="redkey.png" Stretch="None" Visibility="Hidden"/>
         <Image x:Name="greenkey" Source="greenkey.png" Stretch="None" Visibility="Hidden"/>
-        <Image x:Name="door5" Grid.Column="1" Margin="113.073,213.255,489.553,130.042" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Image x:Name="door6" Grid.Column="1" Margin="173.373,213.256,429.253,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Image x:Name="door7" Grid.Column="1" Margin="287.273,213.256,315.353,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Image x:Name="door8" Grid.Column="1" Margin="398.117,213.256,204.508,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Image x:Name="door9" Grid.Column="1" Margin="508.517,213.256,94.108,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
-        <Label x:Name="testlabel" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="26.088,35.346,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="26.088,66.305,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="26.088,102.256,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="26.088,136.016,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Booking ROOM" Grid.Column="1" Margin="190.16,42.948,192.466,10" FontSize="36" VerticalAlignment="Center"/>
+        <Image x:Name="door5" Grid.Column="1" Margin="113.073,213.255,489.553,130.042" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door5_MouseEnter" MouseLeave="door5_MouseLeave"/>
+        <Image x:Name="door6" Grid.Column="1" Margin="173.373,213.256,429.253,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door6_MouseEnter" MouseLeave="door6_MouseLeave"/>
+        <Image x:Name="door7" Grid.Column="1" Margin="287.273,213.256,315.353,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door7_MouseEnter" MouseLeave="door7_MouseLeave"/>
+        <Image x:Name="door8" Grid.Column="1" Margin="398.117,213.256,204.508,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door8_MouseEnter" MouseLeave="door8_MouseLeave"/>
+        <Image x:Name="door9" Grid.Column="1" Margin="508.517,213.256,94.108,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door9_MouseEnter" MouseLeave="door9_MouseLeave"/>
+        <Label x:Name="nameroom" Content="name room" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,35.345,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="classroom" Content="class room" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,66.304,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="numberroom" Content="bed number" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,102.255,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="statusbook" Content="status" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,136.015,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Booking ROOM" Grid.Column="1" Margin="163.16,42.645,203.566,10" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Width="274"/>
+        <Label Content="Name:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,35.346,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Class:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,66.305,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Bed:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,102.256,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Book:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,136.016,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
 
     </Grid>
 </Window>
