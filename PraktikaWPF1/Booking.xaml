@@ -41,7 +41,7 @@
         <Button x:Name="book" Content="Booking" Margin="190.16,26.455,0,0" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="247" Height="40.627" VerticalAlignment="Top" Click="book_Click"/>
         <Button Content="Clear" Margin="44.341,45.122,63.847,47.041" Grid.Row="2" FontSize="18" Click="Button_Click"/>
         <CheckBox x:Name="agreebox" Content="I agree booked room" Grid.Column="1" Margin="19.254,29.455,0,0" Grid.Row="2" Height="15.099" VerticalAlignment="Top" HorizontalAlignment="Left" Width="131.919"/>
-        <Image x:Name="door1" Grid.Column="1" Margin="113.073,136.015,489.553,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
+        <Image x:Name="door1" Grid.Column="1" Margin="113.073,136.015,489.553,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door1_MouseEnter" MouseLeave="door1_MouseLeave"/>
         <Image x:Name="door2" Grid.Column="1" Margin="220.573,136.017,382.053,207.281" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
         <Image x:Name="door3" Grid.Column="1" Margin="328.073,136.016,274.553,207.282" Grid.Row="1" Source="greenkey.png" Stretch="None"/>
         <Image x:Name="door4" Grid.Column="1" Margin="440.573,136.015,162.053,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None"/>

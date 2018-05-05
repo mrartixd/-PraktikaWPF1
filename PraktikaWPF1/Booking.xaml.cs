@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace PraktikaWPF1
 {
-    /// <summary>
-    /// Логика взаимодействия для Booking.xaml
-    /// </summary>
     public partial class Booking : Window
     {
         public Booking()
@@ -97,8 +94,7 @@ namespace PraktikaWPF1
             rooms.SelectedIndex = -1;
             starttime.SelectedDate = null;
             endtime.SelectedDate = null;
-            agreebox.IsChecked = false;
-            
+            agreebox.IsChecked = false;  
         }
 
        
@@ -127,6 +123,16 @@ namespace PraktikaWPF1
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             
+        }
+
+        private void door1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            testlabel.Content = room[0].NameRoom.ToString();
+        }
+
+        private void door1_MouseLeave(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
