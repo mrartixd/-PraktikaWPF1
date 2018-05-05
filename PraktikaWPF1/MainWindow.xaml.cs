@@ -20,9 +20,24 @@ namespace PraktikaWPF1
     /// </summary>
     public partial class MainWindow : Window
     {
+        static List<Room> room = new List<Room>();
         public MainWindow()
         {
             InitializeComponent();
+            AddRoom();
+        }
+
+        public void AddRoom()
+        {
+            room.Add(new Room("Room#1", 0, null, 2, "A", false));
+            room.Add(new Room("Room#2", 1, null, 2, "B", false));
+            room.Add(new Room("Room#3", 2, null, 1, "B", false));
+            room.Add(new Room("Room#4", 3, null, 1, "A", false));
+            room.Add(new Room("Room#5", 4, null, 2, "C", false));
+            room.Add(new Room("Room#6", 5, null, 1, "C", false));
+            room.Add(new Room("Room#7", 6, null, 2, "A", false));
+            room.Add(new Room("Room#8", 7, null, 3, "A", false));
+            room.Add(new Room("Room#9", 8, null, 1, "B", false));
         }
 
         private void plan_Click(object sender, RoutedEventArgs e)
