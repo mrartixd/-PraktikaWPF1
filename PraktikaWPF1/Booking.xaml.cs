@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace PraktikaWPF1
 {
@@ -21,6 +22,10 @@ namespace PraktikaWPF1
         public Booking()
         {
             InitializeComponent();
+            datetime.Visibility = Visibility.Visible;
+            starttime.DisplayDateStart = DateTime.Today;
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today);
+            endtime.BlackoutDates.Add(cdr);
         }
 
         public class StaticKlient
@@ -38,7 +43,6 @@ namespace PraktikaWPF1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             StaticRoom.Room.Add(new Room("Room#1", 0, null, 2, "A", false));
             StaticRoom.Room.Add(new Room("Room#2", 1, null, 2, "B", false));
             StaticRoom.Room.Add(new Room("Room#3", 2, null, 1, "B", false));
@@ -56,13 +60,17 @@ namespace PraktikaWPF1
             }
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0);
             dispatcherTimer.Start();
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
 
-        
         private String RoomText(Room room)
         {
            return room.NameRoom + " rooms: " + room.Beds + " Class: " + room.ClassRoom; 
@@ -79,6 +87,8 @@ namespace PraktikaWPF1
             ChangePictures(StaticRoom.Room[6], door7);
             ChangePictures(StaticRoom.Room[7], door8);
             ChangePictures(StaticRoom.Room[8], door9);
+
+            datetime.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
 
@@ -97,14 +107,17 @@ namespace PraktikaWPF1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            name.Clear();
-            last.Clear();
-            numberdoc.Clear();
-            telephone.Clear();
-            rooms.SelectedIndex = -1;
-            starttime.SelectedDate = null;
-            endtime.SelectedDate = null;
-            agreebox.IsChecked = false;  
+                if (MessageBox.Show("You wanna clear?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                name.Clear();
+                last.Clear();
+                numberdoc.Clear();
+                telephone.Clear();
+                rooms.SelectedIndex = -1;
+                starttime.SelectedDate = null;
+                endtime.SelectedDate = null;
+                agreebox.IsChecked = false;
+                }
         }
 
         private void book_Click(object sender, RoutedEventArgs e)
@@ -147,7 +160,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: "+StaticRoom.Room[0].Klient.name + " "+ StaticRoom.Room[0].Klient.lastname;
+                statusbook.Content = "Booked by: \n"+StaticRoom.Room[0].Klient.name + " "+ StaticRoom.Room[0].Klient.lastname;
             }
             
         }
@@ -172,7 +185,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[1].Klient.name + " " + StaticRoom.Room[1].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[1].Klient.name + " " + StaticRoom.Room[1].Klient.lastname;
             }
 
         }
@@ -197,7 +210,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[2].Klient.name + " " + StaticRoom.Room[2].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[2].Klient.name + " " + StaticRoom.Room[2].Klient.lastname;
             }
 
         }
@@ -222,7 +235,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[3].Klient.name + " " + StaticRoom.Room[3].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[3].Klient.name + " " + StaticRoom.Room[3].Klient.lastname;
             }
 
         }
@@ -247,7 +260,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[4].Klient.name + " " + StaticRoom.Room[4].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[4].Klient.name + " " + StaticRoom.Room[4].Klient.lastname;
             }
 
         }
@@ -272,7 +285,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[5].Klient.name + " " + StaticRoom.Room[5].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[5].Klient.name + " " + StaticRoom.Room[5].Klient.lastname;
             }
 
         }
@@ -297,7 +310,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[6].Klient.name + " " + StaticRoom.Room[6].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[6].Klient.name + " " + StaticRoom.Room[6].Klient.lastname;
             }
 
         }
@@ -322,7 +335,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[7].Klient.name + " " + StaticRoom.Room[7].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[7].Klient.name + " " + StaticRoom.Room[7].Klient.lastname;
             }
 
         }
@@ -347,7 +360,7 @@ namespace PraktikaWPF1
             }
             else
             {
-                statusbook.Content = "Booked by: " + StaticRoom.Room[8].Klient.name + " " + StaticRoom.Room[8].Klient.lastname;
+                statusbook.Content = "Booked by: \n" + StaticRoom.Room[8].Klient.name + " " + StaticRoom.Room[8].Klient.lastname;
             }
 
         }

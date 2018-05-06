@@ -23,11 +23,11 @@
         <Image Grid.Column="1" Grid.Row="1" Source="small-hotel-plan.png" Stretch="None"/>
         <TextBox x:Name="name" Margin="18.788,53.297,21.333,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
         <TextBox x:Name="last" Margin="18.788,102.257,21.333,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="telephone" Margin="18.788,151.217,21.333,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="telephone" Margin="18.788,151.217,21.333,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" PreviewTextInput="NumberValidationTextBox"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="18.788,27,0,303.04" Grid.Row="1" Width="44.297"/>
         <Label Content="Last name:" HorizontalAlignment="Left" Margin="18.788,76.297,0,0" Grid.Row="1" Width="66.313" Height="25.96" VerticalAlignment="Top"/>
         <Label Content="Telephone:" HorizontalAlignment="Left" Margin="18.788,125.257,0,0" Grid.Row="1" Width="67.117" Height="25.96" VerticalAlignment="Top"/>
-        <TextBox x:Name="numberdoc" Margin="20.079,200.177,21.333,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="numberdoc" Margin="20.079,200.177,21.333,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" PreviewTextInput="NumberValidationTextBox"/>
         <Label Content="Document number:&#xD;&#xA;" HorizontalAlignment="Left" Margin="18.788,174.217,0,0" Grid.Row="1" Width="112.553" Height="25.96" VerticalAlignment="Top"/>
         <Label Content="Choose room:" HorizontalAlignment="Left" Margin="20.079,223.177,0,0" Grid.Row="1" Width="84.107" Height="25.96" VerticalAlignment="Top"/>
         <ComboBox x:Name="rooms" Margin="20.079,249.137,21.333,0" Grid.Row="1" Height="21.96" VerticalAlignment="Top">
@@ -40,7 +40,7 @@
         <Label Content="Clien information:" Margin="18.788,0,38.534,346.82" Grid.Row="1" FontSize="16"/>
         <Button x:Name="book" Content="Booking" Margin="291.943,36.788,33.116,47.041" Grid.Row="2" Grid.Column="1" Click="book_Click" FontSize="20" FontWeight="Bold"/>
         <Button Content="Clear" Margin="44.341,45.122,63.847,47.041" Grid.Row="2" FontSize="20" Click="Button_Click"/>
-        <CheckBox x:Name="agreebox" Content="I agree booked room" Grid.Column="1" Margin="100.03,39.789,396.777,93.901" Grid.Row="2"/>
+        <CheckBox x:Name="agreebox" Content="I agree booked room:" Grid.Column="1" Margin="25.029,45.122,412.777,70.9" Grid.Row="2" FontSize="18"/>
         <Image x:Name="door1" Grid.Column="1" Margin="113.073,136.015,489.553,207.283" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door1_MouseEnter" MouseLeave="door1_MouseLeave"/>
         <Image x:Name="door2" Grid.Column="1" Margin="220.573,136.017,382.053,207.281" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door2_MouseEnter" MouseLeave="door2_MouseLeave"/>
         <Image x:Name="door3" Grid.Column="1" Margin="328.073,136.016,274.553,207.282" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door3_MouseEnter" MouseLeave="door3_MouseLeave"/>
@@ -52,15 +52,16 @@
         <Image x:Name="door7" Grid.Column="1" Margin="287.273,213.256,315.353,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door7_MouseEnter" MouseLeave="door7_MouseLeave"/>
         <Image x:Name="door8" Grid.Column="1" Margin="398.117,213.256,204.508,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door8_MouseEnter" MouseLeave="door8_MouseLeave"/>
         <Image x:Name="door9" Grid.Column="1" Margin="508.517,213.256,94.108,130.041" Grid.Row="1" Source="greenkey.png" Stretch="None" MouseEnter="door9_MouseEnter" MouseLeave="door9_MouseLeave"/>
-        <Label x:Name="nameroom" Content="name room" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,35.345,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="classroom" Content="class room" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,66.304,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="numberroom" Content="bed number" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,102.255,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="statusbook" Content="status" Grid.Column="2" HorizontalAlignment="Left" Margin="101.088,136.015,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="nameroom" Content="name room" Grid.Column="2" HorizontalAlignment="Center" Margin="64.345,30.024,22.33,317.044" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Width="141.078"/>
+        <Label x:Name="classroom" Content="class room" Grid.Column="2" HorizontalAlignment="Center" Margin="64.344,66.304,22.33,278.614" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Height="33.431" Width="141.079"/>
+        <Label x:Name="numberroom" Content="bed number" Grid.Column="2" HorizontalAlignment="Center" Margin="64.344,104.735,14.546,242.333" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Width="148.863"/>
+        <Label x:Name="statusbook" Content="status" Grid.Column="2" HorizontalAlignment="Center" Margin="64.344,139.786,22.33,178.172" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Height="60.391" Width="141.079"/>
         <Label Content="Booking ROOM" Grid.Column="1" Margin="163.16,42.645,203.566,10" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Width="274"/>
-        <Label Content="Name:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,35.346,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Class:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,66.305,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Bed:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,102.256,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Book:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,136.016,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Name:" Grid.Column="2" HorizontalAlignment="Center" Margin="5,30.024,167.026,317.044" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
+        <Label Content="Class:" Grid.Column="2" HorizontalAlignment="Center" Margin="5,66.304,173.782,278.614" Grid.Row="1" VerticalAlignment="Center" FontSize="16" Height="33.431"/>
+        <Label Content="Bed:" Grid.Column="2" HorizontalAlignment="Center" Margin="5,104.735,182.319,242.334" Grid.Row="1" VerticalAlignment="Center" FontSize="16" Height="31.28"/>
+        <Label Content="Book:" Grid.Column="2" HorizontalAlignment="Center" Margin="5,139.788,173.409,204.132" Grid.Row="1" VerticalAlignment="Center" FontSize="16" Height="34.429"/>
+        <Label x:Name="datetime" Content="Label" Margin="10,38,5.871,35.929" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Width="203.65" Visibility="Hidden"/>
 
     </Grid>
 </Window>
