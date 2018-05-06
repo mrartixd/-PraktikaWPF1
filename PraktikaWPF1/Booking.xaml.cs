@@ -17,42 +17,52 @@ namespace PraktikaWPF1
 {
     public partial class Booking : Window
     {
+
         public Booking()
         {
             InitializeComponent();
-            
         }
-        static MainWindow main = new MainWindow();
-        static List<Klient> klient = new List<Klient>();
-        static List<Room> room = new List<Room>();
-        static System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
+        public class StaticKlient
+        {
+            private static List<Klient> klient = new List<Klient>();
+            
+            internal static List<Klient> Klient { get => klient; set => klient = value; }
+        }
+        public class StaticRoom
+        {
+            private static List<Room> room = new List<Room>();
 
-      
+            internal static List<Room> Room { get => room; set => room = value; }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            room.Add(new Room("Room#1", 0, null, 2, "A", false));
-            room.Add(new Room("Room#2", 1, null, 2, "B", false));
-            room.Add(new Room("Room#3", 2, null, 1, "B", false));
-            room.Add(new Room("Room#4", 3, null, 1, "A", false));
-            room.Add(new Room("Room#5", 4, null, 2, "C", false));
-            room.Add(new Room("Room#6", 5, null, 1, "C", false));
-            room.Add(new Room("Room#7", 6, null, 2, "A", false));
-            room.Add(new Room("Room#8", 7, null, 3, "A", false));
-            room.Add(new Room("Room#9", 8, null, 1, "B", false));
 
-            for (int i = 0; i < room.Count; i++)
+            StaticRoom.Room.Add(new Room("Room#1", 0, null, 2, "A", false));
+            StaticRoom.Room.Add(new Room("Room#2", 1, null, 2, "B", false));
+            StaticRoom.Room.Add(new Room("Room#3", 2, null, 1, "B", false));
+            StaticRoom.Room.Add(new Room("Room#4", 3, null, 1, "A", false));
+            StaticRoom.Room.Add(new Room("Room#5", 4, null, 2, "C", false));
+            StaticRoom.Room.Add(new Room("Room#6", 5, null, 1, "C", false));
+            StaticRoom.Room.Add(new Room("Room#7", 6, null, 2, "A", false));
+            StaticRoom.Room.Add(new Room("Room#8", 7, null, 3, "A", false));
+            StaticRoom.Room.Add(new Room("Room#9", 8, null, 1, "B", false));
+            for (int i = 0; i < StaticRoom.Room.Count; i++)
             {
-                if (!rooms.Items.Contains(RoomText(room[i])))
-                    rooms.Items.Add(RoomText(room[i]));
+                if (!rooms.Items.Contains(RoomText(StaticRoom.Room[i])))
+                    rooms.Items.Add(RoomText(StaticRoom.Room[i]));
 
             }
-            
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
         }
 
+
+
+        
         private String RoomText(Room room)
         {
            return room.NameRoom + " rooms: " + room.Beds + " Class: " + room.ClassRoom; 
@@ -60,15 +70,15 @@ namespace PraktikaWPF1
      
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            ChangePictures(room[0], door1);
-            ChangePictures(room[1], door2);
-            ChangePictures(room[2], door3);
-            ChangePictures(room[3], door4);
-            ChangePictures(room[4], door5);
-            ChangePictures(room[5], door6);
-            ChangePictures(room[6], door7);
-            ChangePictures(room[7], door8);
-            ChangePictures(room[8], door9);
+            ChangePictures(StaticRoom.Room[0], door1);
+            ChangePictures(StaticRoom.Room[1], door2);
+            ChangePictures(StaticRoom.Room[2], door3);
+            ChangePictures(StaticRoom.Room[3], door4);
+            ChangePictures(StaticRoom.Room[4], door5);
+            ChangePictures(StaticRoom.Room[5], door6);
+            ChangePictures(StaticRoom.Room[6], door7);
+            ChangePictures(StaticRoom.Room[7], door8);
+            ChangePictures(StaticRoom.Room[8], door9);
         }
 
 
@@ -97,24 +107,20 @@ namespace PraktikaWPF1
             agreebox.IsChecked = false;  
         }
 
-       
-    
-
         private void book_Click(object sender, RoutedEventArgs e)
         {
             if(name.Equals(null) || last.Equals(null) || numberdoc.Equals(null) || telephone.Equals(null) || rooms.SelectedIndex == -1)
             {
                 MessageBox.Show("Field box empty", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                
             }
             else
             {
-                if (agreebox.IsChecked == true && room[rooms.SelectedIndex].Status == false)
+                if (agreebox.IsChecked == true && StaticRoom.Room[rooms.SelectedIndex].Status == false)
                 {
-                    room[rooms.SelectedIndex].Status = true;
+                    StaticRoom.Room[rooms.SelectedIndex].Status = true;
                     Klient kl = new Klient(name.Text, last.Text, telephone.Text, numberdoc.Text, starttime.SelectedDate.Value, endtime.SelectedDate.Value);
-                    room[rooms.SelectedIndex].Klient = kl;
-                    klient.Add(kl);
+                    StaticKlient.Klient.Add(kl);
+                    StaticRoom.Room[rooms.SelectedIndex].Klient = kl;
                     MessageBox.Show("Welcome", "Success", MessageBoxButton.OK,MessageBoxImage.Information);
                 }
                 else if (agreebox.IsChecked == false)
@@ -132,16 +138,16 @@ namespace PraktikaWPF1
         // mouse hover
         private void door1_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[0].NameRoom.ToString();
-            classroom.Content = room[0].ClassRoom.ToString();
-            numberroom.Content = room[0].Beds.ToString();
-            if(room[0].Status == false)
+            nameroom.Content = StaticRoom.Room[0].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[0].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[0].Beds.ToString();
+            if(StaticRoom.Room[0].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: "+StaticRoom.Room[0].Klient.name + " "+ StaticRoom.Room[0].Klient.lastname;
             }
             
         }
@@ -157,16 +163,16 @@ namespace PraktikaWPF1
 
         private void door2_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[1].NameRoom.ToString();
-            classroom.Content = room[1].ClassRoom.ToString();
-            numberroom.Content = room[1].Beds.ToString();
-            if (room[1].Status == false)
+            nameroom.Content = StaticRoom.Room[1].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[1].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[1].Beds.ToString();
+            if (StaticRoom.Room[1].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[1].Klient.name + " " + StaticRoom.Room[1].Klient.lastname;
             }
 
         }
@@ -182,16 +188,16 @@ namespace PraktikaWPF1
 
         private void door3_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[2].NameRoom.ToString();
-            classroom.Content = room[2].ClassRoom.ToString();
-            numberroom.Content = room[2].Beds.ToString();
-            if (room[2].Status == false)
+            nameroom.Content = StaticRoom.Room[2].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[2].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[2].Beds.ToString();
+            if (StaticRoom.Room[2].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[2].Klient.name + " " + StaticRoom.Room[2].Klient.lastname;
             }
 
         }
@@ -207,16 +213,16 @@ namespace PraktikaWPF1
 
         private void door4_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[3].NameRoom.ToString();
-            classroom.Content = room[3].ClassRoom.ToString();
-            numberroom.Content = room[3].Beds.ToString();
-            if (room[3].Status == false)
+            nameroom.Content = StaticRoom.Room[3].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[3].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[3].Beds.ToString();
+            if (StaticRoom.Room[3].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[3].Klient.name + " " + StaticRoom.Room[3].Klient.lastname;
             }
 
         }
@@ -232,16 +238,16 @@ namespace PraktikaWPF1
 
         private void door5_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[4].NameRoom.ToString();
-            classroom.Content = room[4].ClassRoom.ToString();
-            numberroom.Content = room[4].Beds.ToString();
-            if (room[4].Status == false)
+            nameroom.Content = StaticRoom.Room[4].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[4].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[4].Beds.ToString();
+            if (StaticRoom.Room[4].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[4].Klient.name + " " + StaticRoom.Room[4].Klient.lastname;
             }
 
         }
@@ -257,16 +263,16 @@ namespace PraktikaWPF1
 
         private void door6_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[5].NameRoom.ToString();
-            classroom.Content = room[5].ClassRoom.ToString();
-            numberroom.Content = room[5].Beds.ToString();
-            if (room[5].Status == false)
+            nameroom.Content = StaticRoom.Room[5].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[5].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[5].Beds.ToString();
+            if (StaticRoom.Room[5].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[5].Klient.name + " " + StaticRoom.Room[5].Klient.lastname;
             }
 
         }
@@ -282,16 +288,16 @@ namespace PraktikaWPF1
 
         private void door7_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[6].NameRoom.ToString();
-            classroom.Content = room[6].ClassRoom.ToString();
-            numberroom.Content = room[6].Beds.ToString();
-            if (room[6].Status == false)
+            nameroom.Content = StaticRoom.Room[6].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[6].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[6].Beds.ToString();
+            if (StaticRoom.Room[6].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[6].Klient.name + " " + StaticRoom.Room[6].Klient.lastname;
             }
 
         }
@@ -307,16 +313,16 @@ namespace PraktikaWPF1
 
         private void door8_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[7].NameRoom.ToString();
-            classroom.Content = room[7].ClassRoom.ToString();
-            numberroom.Content = room[7].Beds.ToString();
-            if (room[7].Status == false)
+            nameroom.Content = StaticRoom.Room[7].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[7].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[7].Beds.ToString();
+            if (StaticRoom.Room[7].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[7].Klient.name + " " + StaticRoom.Room[7].Klient.lastname;
             }
 
         }
@@ -332,16 +338,16 @@ namespace PraktikaWPF1
 
         private void door9_MouseEnter(object sender, MouseEventArgs e)
         {
-            nameroom.Content = room[8].NameRoom.ToString();
-            classroom.Content = room[8].ClassRoom.ToString();
-            numberroom.Content = room[8].Beds.ToString();
-            if (room[8].Status == false)
+            nameroom.Content = StaticRoom.Room[8].NameRoom.ToString();
+            classroom.Content = StaticRoom.Room[8].ClassRoom.ToString();
+            numberroom.Content = StaticRoom.Room[8].Beds.ToString();
+            if (StaticRoom.Room[8].Status == false)
             {
                 statusbook.Content = "Empty";
             }
             else
             {
-                statusbook.Content = "Booked";
+                statusbook.Content = "Booked by: " + StaticRoom.Room[8].Klient.name + " " + StaticRoom.Room[8].Klient.lastname;
             }
 
         }
