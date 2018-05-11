@@ -43,8 +43,13 @@ namespace PraktikaWPF1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            StaticRoom.Room.Add(new Room("Room#1", 0, null, 2, "A", false));
-            StaticRoom.Room.Add(new Room("Room#2", 1, null, 2, "B", false));
+
+            Klient testklient = new Klient("Artur", "Shabunov", "+3725581660" ,"12345" , new DateTime(2018, 5, 9, 12, 00, 00), new DateTime(2018, 5, 10, 12, 00, 00));
+            Klient testklient1 = new Klient("Artur", "Shabunov", "+3725581660", "1111", new DateTime(2018, 5, 9, 12, 00, 00), new DateTime(2018, 5, 12, 12, 00, 00));
+            StaticKlient.Klient.Add(testklient);
+            StaticKlient.Klient.Add(testklient1);
+            StaticRoom.Room.Add(new Room("Room#1", 0, StaticKlient.Klient[0], 2, "A", true));
+            StaticRoom.Room.Add(new Room("Room#2", 1, StaticKlient.Klient[1], 2, "B", true));
             StaticRoom.Room.Add(new Room("Room#3", 2, null, 1, "B", false));
             StaticRoom.Room.Add(new Room("Room#4", 3, null, 1, "A", false));
             StaticRoom.Room.Add(new Room("Room#5", 4, null, 2, "C", false));
@@ -52,6 +57,7 @@ namespace PraktikaWPF1
             StaticRoom.Room.Add(new Room("Room#7", 6, null, 2, "A", false));
             StaticRoom.Room.Add(new Room("Room#8", 7, null, 3, "A", false));
             StaticRoom.Room.Add(new Room("Room#9", 8, null, 1, "B", false));
+            
             for (int i = 0; i < StaticRoom.Room.Count; i++)
             {
                 if (!rooms.Items.Contains(RoomText(StaticRoom.Room[i])))

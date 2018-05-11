@@ -73,9 +73,15 @@ namespace PraktikaWPF1
                     namebox.Text = r.name.ToString();
                     lastnamebox.Text = r.lastname.ToString();
                     starttime1.Content = r.start.ToString("dd/MM/yyyy");
-                    if(!r.end.Equals(DateTime.Now))
+                    if(r.end > DateTime.Now)
                     {
                         MessageBox.Show("You late!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        endtime1.Foreground = System.Windows.Media.Brushes.Red;
+                        endtime1.Content = r.end.ToString("dd/MM/yyyy");
+                    }
+                    else if(r.end < DateTime.Now)
+                    {
+                        MessageBox.Show("You hurry!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                         endtime1.Foreground = System.Windows.Media.Brushes.Red;
                         endtime1.Content = r.end.ToString("dd/MM/yyyy");
                     }
